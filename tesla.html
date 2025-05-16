@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tesla</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body{
+      height: 100%;
+      font-family: 'Helvetica Neue', sans-serif;
+      scroll-behavior: smooth;
+    }
+    header {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 40px;
+      background: transparent;
+      z-index: 999;
+    }
+    .logo {
+      font-weight: bold;
+      font-size: 24px;
+      letter-spacing: 2px;
+      color: black;
+    }
+    nav {
+      display: flex;
+      gap: 60px;
+    }
+
+    .menu-right button {
+      background: transparent;
+      border: none;
+      color: white;
+      font-size: 16px;
+      padding: 8px 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .menu-right button:hover {
+      background-color: rgba(216, 226, 227, 0.4);
+      border-radius: 10px;
+    }
+    .menu-right {
+      display: flex;
+      gap: 10px;
+    }
+    .menu-right button {
+      font-size: 23px;
+    }
+    .nav-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      padding: 10px 20px;
+      position: relative;
+      left:300px;
+    }
+    .nav-item button {
+      background: transparent;
+      border: none;
+      font-size: 16px;
+      color: white;
+      cursor: pointer;
+    }
+    .dropdown {
+      position: absolute;
+      top: -20px; 
+      background: white;
+      color: black;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: all 0.5s ease;
+      pointer-events: none; 
+    }
+    .vechile{
+      width: 1550px;
+      left: -500px;
+      padding: 40px 50px;
+    }
+    .energy{
+      width: 1570px;
+      left: -700px;
+      padding: 70px 100px;
+    }
+    .charging{
+      width: 1540px;
+      left: -800px;
+      padding: 50px 100px;
+    }
+    .discover{
+      width: 1540px;
+      right: -470px;
+      padding: 50px 100px;
+    }
+    .nav-item:hover {
+    background-color: rgba(216, 226, 227, 0.4);
+    border-radius: 10px;
+    }
+    .nav-item:hover .dropdown {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    .right li a,.dis li a{
+      text-decoration: none;
+      color: black
+    }
+    .right a:hover {
+      text-decoration: underline black;
+      
+    }
+    .discover a:hover{
+      text-decoration: underline black;
+    }
+    .dis li{
+      position: relative;
+      left: 40px;
+    }
+    .dis1 li{
+      position: relative;
+      left: 500px;
+      top: -220px;
+    }
+    .dis2 li{
+      position: relative;
+      left: 1000px;
+      top: -340px;
+    }
+    
+    .section {
+      position: relative;
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+    
+    }
+    .section img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .content {
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: white;
+      opacity: 0.85;
+    }
+    .content h1 {
+      font-size: 56px;
+      margin-bottom: 10px;
+    }
+    .content p {
+      font-size: 24px;
+      margin-bottom: 20px;
+      
+    }
+    .buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+      
+    }
+    .buttons button {
+      padding: 10px 40px;
+      border: none;
+      border-radius: 5px;
+      font-size: 14px;
+      cursor: pointer;
+      opacity: 0.75;
+      width: 250px;
+      font-weight: bold;
+      transition: background 0.3s;
+      position: relative;
+    }
+    .primary {
+      background-color: blue;
+      color: white;
+      
+    }
+    .secondary {
+      background-color: white;
+      color: black;
+    }
+    .btn, .btn3, .btn4 ,.btn5, .btn6, .btn7{
+      top: 380px;
+    }
+    .btn1{
+      top: 350px;
+      background-color: black;
+      color: white;
+    }
+    .footer {
+      background: white;
+      padding: 30px 20px;
+      text-align: center;
+      font-size: 12px;
+      color: #5c5e62;
+    }
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+      padding: 20px 0;
+    }
+    .footer-links li a {
+      text-decoration: none;
+      color: #5c5e62;
+
+    }
+    .bottom-navbar {
+      position: sticky;
+      bottom: 0;
+      width: 100%;
+      background:white; 
+      display: flex;
+      justify-content: center;
+      padding: 10px 24px;
+      z-index: 999;
+    }   
+    .bottom-navbar button {
+      background-color: #F4F4f4;
+      border: 1px solid #8f9195;
+      font-size: 14px;
+      color: #393c41;
+      cursor: pointer;
+      padding: 8px 40px;
+      border-radius: 4px; 
+    }
+    @media (max-width: 768px) {
+      nav, .menu-right {
+        display: none;
+    }
+    
+      
+    }
+    @media (max-width: 900px) {
+       .menu-right {
+        display: none;
+    }
+    
+      
+    }
+  
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+  <div class="logo">TESLA</div>
+    <div class="nav-item">
+      <button>Vehicles</button>
+      <div class="dropdown vechile" style="display: flex";>
+        <ul class="left" style=" list-style: none;display: flex; flex-wrap: wrap; gap: 20px;">
+          <li><img src="/asserts/car1.avif" alt="Car 1" height="200px" width="250px"></li>
+          <li><img src="/asserts/car2.avif" alt="Car 2" height="200px" width="250px"></li>
+          <li><img src="/asserts/car3.avif" alt="Car 3" height="200px" width="250px"></li>
+          <li><img src="/asserts/car4.avif" alt="Car 4" height="200px" width="250px"></li>
+          <li><img src="/asserts/car5.avif" alt="Car 5" height="200px" width="250px"></li>
+          <li><img src="/asserts/car6.avif" alt="Car 6" height="200px" width="250px"></li>
+        </ul>
+      
+    
+      <div style="width:1px; background:black; height:350px; margin: 40px 0;"></div>
+        <ul class="right" style=" list-style: none;display: flex; flex-direction: column; justify-content: flex-start; gap: 10px; width: 35%; padding-left: 40px;padding-top:50px">
+          <li><a href="#">Help Me Choose</a></li>
+          <li><a href="#">Demo Drive</a></li>
+          <li><a href="#">Trade-in</a></li>
+          <li><a href="#">Compare</a></li>
+          <li><a href="#">Workshops</a></li>
+          <li><a href="#">Help Me Charge</a></li>
+          <li><a href="#">Fleetv</li>
+          <li><a href="#">Semi</a></li>
+          <li><a href="#">Roadster</a></li>
+          <li><a href="#">Federal Tax Credit</a></li>
+          <li><a href="#">We, Robot</a></li>
+        </ul>
+    
+      </div>
+    </div>
+  </div>
+    
+  
+    
+    <div class="nav-item">
+      <button>Energy</button>
+        <div class="dropdown energy" style="display: flex";>
+        <ul class="left" style=" list-style: none;display: flex; flex-wrap: wrap; gap: 30px;padding-left: 40px;padding-top:50px">
+          <li><img src="/asserts/Mega-Menu-Energy-Solar-Panels.avif" alt="Car 1" height="150px" width="200px"></li>
+          <li><img src="/asserts/Mega-Menu-Energy-Solar-Roof.avif" alt="Car 2" height="150px" width="20px"></li>
+          <li><img src="/asserts/Mega-Menu-Energy-Powerwall-US.avif" alt="Car 3" height="150px" width="200px"></li>
+          <li><img src="/asserts/Mega-Menu-Energy-Megapack.png" alt="Car 4" height="150px" width="200px"></li>
+
+        </ul>
+    
+        <div style="width:1px; background:black; height:250px; margin: 10px 0;"></div>
+        <ul class="right" style=" list-style: none;display: flex; flex-direction: column; justify-content: flex-start; gap: 10px; width: 35%; padding-left: 40px;padding-top:0px">
+          <li><a href="#">Schedule a Consultation</a></li>
+          <li><a href="#">Why Solar</a></li>
+          <li><a href="#">Incentives</a></li>
+          <li><a href="#">Support</a></li>
+          <li><a href="#">Partner with Tesla</a></li>
+          <li><a href="#">Commercial</a></li>
+          <li><a href="#">Utilities</a></li>
+         
+        </ul>
+        </div>
+      </div>
+    </div>
+  
+    <div class="nav-item">
+      <button>Charging</button>
+      <div class="dropdown charging" style="display: flex;">
+        <ul class="left" style=" list-style: none;display: flex; flex-wrap: wrap; gap: 20px; padding-left: 40px;padding-top:50px;">
+          <li><img src="/asserts/Mega-Menu-Charging-Charging.avif" alt="Car 1" height="150px" width="200px"></li>
+          <li><img src="/asserts/Mega-Menu-Charging-Home-Charging.avif" alt="Car 2" height="150px" width="200px"></li>
+          <li><img src="/asserts/Mega-Menu-Charging-Supercharging-NA.avif" alt="Car 3" height="150px" width="200px"></li>
+        </ul>
+      
+    
+      <div style="width:1px; background:black; height:250px; margin: 40px 0;"></div>
+        <ul class="right" style=" list-style: none;display: flex; flex-direction: column; justify-content: flex-start; gap: 10px; width: 35%; padding-left: 40px;padding-top:50px">
+          <li><a href="#">  Help Me Charge</a></li>
+          <li><a href="#">Charging Calculator</a></li>
+          <li><a href="#">Charging With NACS</a></li>
+          <li><a href="#">Supercharger Voting</a></li>
+          <li><a href="#">Host a Supercharger</a></li>
+          <li><a href="#">Commercial Charging</a></li>
+          <li><a href="#">Host Wall Connectors</a></li>
+        </ul>
+    
+      </div>
+    </div>
+  </div>
+
+    <div class="nav-item">
+      <button>Discover</button>
+      <div class="dropdown discover" style="display: flex";>
+        <div style="margin: 40px 0;"></div>
+        <ul class="right" style=" list-style: none;display: flex; flex-direction: column; justify-content: flex-start; gap: 10px; width: 35%; padding-left: 40px;padding-top:50px">
+          <div class="dis">
+          <li><a href="#"><h4>Resourses</h4></a></li>
+          <br>
+          <br>
+            <li><a href="#">Demo Drive</a></li>
+            <li><a href="#">Insurance</a></li>
+            <li><a href="#">Military Purchase Program</a></li>
+            <li><a href="#">Learn</a></li>
+            <li><a href="#">Video Guides</a></li>
+            <li><a href="#">Customer Stories</a></li>
+            <li><a href="#">Events</a></li>
+            <li><a href="#">Workshops</a></li>
+          </div>
+          <div class="dis1">
+            <li><a href="#"><h4>Location Services</h4>
+            </a></li><br><br>
+            <li><a href="#">Find Us</a></li>
+            <li><a href="#">Find a Collision Center</a></li>
+            <li><a href="#">Find a Certified Installer</a></li>
+          </div>
+          <div class="dis2">
+            <li><a href="#"><h4>Company</h4>
+            </a></li><br><br>
+            <li><a href="#">About</a></li>
+              <li><a href="#">Careers</a></li>
+                <li><a href="#">Investor Relations</a></li>
+          </div>
+        </ul>
+        </div>
+
+    </div>
+  </nav>
+  
+
+  
+  <div class="menu-right">
+    <button><i class="fa-solid fa-question"></i></button>
+    <button><i class="fa-solid fa-globe"></i></button>
+    <button><i class="fa-regular fa-circle-user"></i></button>
+  </div>
+</header>
+
+<section class="section">
+  <img src="/asserts/Homepage-Model-Y-2-Desktop-US.avif" alt="Tesla Car Image">
+  <div class="content">
+    <h1>Model Y</h1>
+    <p>Staring ar $41,490<br>
+    After $7,500 Federal Tax Credit</p>
+    <div class="buttons">
+      <button class="primary ">Order Now</button>
+      <button class="secondary">Learn More</button>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <img src="/asserts/Homepage-Model-3-Desktop-US.avif" alt="Tesla Car Image">
+  <div class="content">
+    <h1>Model 3</h1>
+    <p><u>0% APR Available</u></p>
+    <div class="buttons btn">
+      <button class="primary" >Order Now</button>
+      <button class="secondary">Learn More</button>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <img src="/asserts/Homepage-Cybertruck-Hero-US-Desktop-v4.avif" alt="Tesla Car Image">
+  <div class="content">
+    <h1>Model 3</h1>
+    <p><u>Lease From $779/mo</u></p>
+    <div class="buttons ">
+      <button class="btn1 " >Order Now</button>
+      <button class="btn1">Learn More</button>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <img src="/asserts/Homepage-Model-X-Desktop-US.avif" alt="Tesla Car Image">
+  <div class="content">
+    <h1>Model 3</h1>
+    <p><u>0% APR Available</u></p>
+
+    <div class="buttons btn2">
+      <button class="primary" >Order Now</button>
+      <button class="secondary">Learn More</button>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <img src="/asserts/Homepage-Model-S-Desktop-US.avif" alt="Tesla Car Image">
+  <div class="content">
+    <h1>Model X</h1>
+    <p>Free Supercharging Ending Soon</p>
+    <div class="buttons btn3">
+      <button class="primary" >Order Now</button>
+      <button class="secondary">Learn More</button>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <img src="/asserts/Homepage-SolarPanels-01-Desktop.avif" alt="Tesla Car Image">
+  <div class="content">
+    <h1>Model S</h1>
+    <p>Free Supercharging Ending Soon</p>
+    <div class="buttons btn4">
+      <button class="primary" >Order Now</button>
+      <button class="secondary">Learn More</button>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <img src="/asserts/Homepage-SolarRoof-Desktop-US.avif" alt="Tesla Car Image">
+  <div class="content">
+    <h1>Solar Panels</h1>
+    <p><u>Shedule a Virtual Contribution</u></p>
+    <div class="buttons btn5">
+      <button class="primary" >Order Now</button>
+      <button class="secondary">Learn More</button>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <img src="/asserts/Homepage-Powerwall-Desktop-US.avif" alt="Tesla Car Image">
+  <div class="content">
+    <h1>Solar Roof</h1>
+    <p>Produce Clean Energy From Your Roof</p>
+    <div class="buttons btn6">
+      <button class="primary" >Order Now</button>
+      <button class="secondary">Learn More</button>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <img src="/asserts/Homepage-Accessories-Desktop-US.avif" alt="Tesla Car Image">
+  <div class="content">
+    <h1>Powerwall</h1>
+    <div class="buttons btn7">
+      <button class="primary" >Order Now</button>
+      <button class="secondary">Learn More</button>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <img src="/asserts/Homepage-Accessories-Desktop-US.avif" alt="Tesla Car Image">
+  <div class="content">
+    <h1>Powerwall</h1>
+    <div class="buttons btn7">
+      <button class="primary" >Order Now</button>
+      <button class="secondary">Learn More</button>
+    </div>
+  </div>
+</section>
+ 
+
+<footer class="footer">
+  <div class="footer-content">
+    <p>1 Before the Federal Tax Credit, Model Y Long Range AWD starts at $50,630. Price includes Destination and Order Fees but exclude taxes and other fees. Subject to change. Vehicle shown has upgrades that will increase the price. The $7,500 Federal Tax Credit is available to eligible buyers and subject to MSRP caps. Not all vehicles, customers or finance options will be eligible. Terms apply.</p>
+    <ul class="footer-links">
+      <li>Tesla @2025</li>
+      <li><a href="#">Privacy & Legal</a></li>
+      <li><a href="#">Vehicle Recalls</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#">News</a></li>
+      <li><a href="#">Get Updates</a></li>
+      <li><a href="#">Locations</a></li>
+    </ul>
+  </div>
+</footer>
+
+<div class="bottom-navbar">
+  <button>Shedule a drive Today</button>
+  
+</div>
+</body>
+</html>
